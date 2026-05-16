@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Self-hosted fonts ───────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-Variable.woff2') format('woff2-variations');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Base ────────────────────────────────────────────────────────────────── */
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans text-base leading-relaxed antialiased;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem);  line-height: 1.2; font-weight: 700; }
+  h3 { font-size: clamp(1.125rem, 2vw, 1.375rem); line-height: 1.4; font-weight: 600; }
+
+  a { @apply text-brand; }
+  a:hover { @apply text-brand-dark; }
+
+  img, picture { display: block; max-width: 100%; }
+
+  /* Focus rings */
+  :focus-visible {
+    outline: 2px solid #1E3A5F;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ─── Components ──────────────────────────────────────────────────────────── */
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-semibold text-sm rounded transition-colors duration-150;
+  }
+  .btn-primary:hover {
+    @apply bg-accent-dark text-white no-underline;
+  }
+  .btn-primary:active {
+    @apply bg-accent-dark;
+    transform: translateY(1px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-white text-white font-semibold text-sm rounded transition-colors duration-150;
+  }
+  .btn-secondary:hover {
+    @apply bg-white text-brand no-underline;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-brand text-brand font-semibold text-sm rounded transition-colors duration-150;
+  }
+  .btn-outline:hover {
+    @apply bg-brand text-white no-underline;
+  }
+
+  /* Section wrapper */
+  .section-wrap {
+    @apply max-w-content mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section padding */
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  /* Card */
+  .card {
+    @apply border border-border rounded p-6 bg-bg transition-all duration-150;
+  }
+  .card:hover {
+    @apply border-ink-muted;
+    transform: translateY(-2px);
+  }
+
+  /* Stat number */
+  .stat-num {
+    @apply font-mono font-bold text-accent;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Trust badge */
+  .trust-badge {
+    @apply inline-flex items-center gap-1.5 text-xs font-medium text-white/80 border border-white/25 rounded px-2 py-1;
+  }
+
+  /* Section label */
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-accent mb-3 block;
+  }
+
+  /* Hairline underline on section headings */
+  .heading-underline {
+    @apply relative pb-4;
+  }
+  .heading-underline::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-12 h-0.5 bg-accent;
+  }
+
+  /* Client name tile */
+  .client-tile {
+    @apply border border-border rounded px-4 py-3 text-center text-sm font-semibold uppercase tracking-wide text-ink-muted transition-colors duration-150;
+  }
+  .client-tile:hover {
+    @apply border-brand text-brand;
+  }
+
+  /* Service card icon wrapper */
+  .svc-icon {
+    @apply w-10 h-10 flex items-center justify-center text-brand mb-4;
+  }
+}
+
+/* ─── Scroll-reveal ───────────────────────────────────────────────────────── */
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Skip link */
+  .skip-link {
+    @apply absolute -top-full left-4 bg-brand text-white px-4 py-2 text-sm font-medium rounded focus:top-4 z-50;
+    transition: top 0.15s;
+  }
+}
+
+/* ─── Reduced motion ──────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
