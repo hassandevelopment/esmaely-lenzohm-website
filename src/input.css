@@ -138,6 +138,21 @@
     @apply border-brand text-brand;
   }
 
+  /* Client logo tile */
+  .client-logo-tile {
+    @apply border border-border rounded flex items-center justify-center p-4 bg-bg transition-all duration-150;
+    min-height: 90px;
+  }
+  .client-logo-tile:hover {
+    @apply border-brand shadow-sm;
+  }
+  .client-logo-tile img {
+    max-height: 60px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
   /* Service card icon wrapper */
   .svc-icon {
     @apply w-10 h-10 flex items-center justify-center text-brand mb-4;

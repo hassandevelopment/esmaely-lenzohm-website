@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="220" height="80">
+  <rect width="220" height="80" fill="white"/>
+  <!-- GARMCO wordmark — steel blue -->
+  <text x="110" y="42" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="#004B8D" text-anchor="middle" letter-spacing="2">GARMCO</text>
+  <text x="110" y="60" font-family="Arial, sans-serif" font-size="8" font-weight="400" fill="#004B8D" text-anchor="middle" letter-spacing="1">GULF ALUMINIUM ROLLING MILL</text>
+  <rect x="55" y="65" width="110" height="1.5" fill="#004B8D" rx="1"/>
+</svg>
